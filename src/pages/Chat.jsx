@@ -45,7 +45,8 @@ export default function Chat() {
   // Socket Connection
   useEffect(() => {
     if (!user) return;
-    const newSocket = io('http://localhost:5000');
+    const backendUrl = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5000';
+    const newSocket = io(backendUrl);
     setSocket(newSocket);
 
     newSocket.emit('join', user._id);

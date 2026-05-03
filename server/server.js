@@ -19,8 +19,13 @@ const PORT = process.env.PORT || 5000;
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['https://aura-mood-based-social-media.vercel.app'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'https://aura-mood-based-social-media.vercel.app'
+    ],
     methods: ['GET', 'POST'],
+    credentials: true,
   },
 });
 
